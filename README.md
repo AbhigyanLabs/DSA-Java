@@ -6,11 +6,17 @@ reference for coding interviews and competitive programming.
 📌 What's Inside?
 
 ✅ Common Data Structures (Arrays, Linked Lists, Stacks, Queues, Trees, Graphs)
+
 ✅ Sorting & Searching Algorithms
+
 ✅ Dynamic Programming & Recursion
+
 ✅ Greedy Algorithms
+
 ✅ Backtracking & Bit Manipulation
+
 ✅ Graph Algorithms (BFS, DFS, Dijkstra, etc.)
+
 ✅ Important Coding Interview Questions
 
 💡 Usage
