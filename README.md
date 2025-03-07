@@ -22,5 +22,6 @@ reference for coding interviews and competitive programming.
 💡 Usage
 Feel free to explore, contribute, and improve the solutions! Clone the repository and run the code in your preferred environment.
 
-🔗 Connect with Me-
+🔗 Connect with Me on-
+
 LinkedIn | GitHub | LeetCode | CodeChef
