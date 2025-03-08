@@ -34,6 +34,6 @@ class selectionsort
         {
             System.out.print(arr[i]+" ");
         }
-        //System.out.print(Arrays.toString(arr));                             (A better way to print answer)
+        //System.out.print(Arrays.toString(arr));            (A better way to print answer)
     }
 }
