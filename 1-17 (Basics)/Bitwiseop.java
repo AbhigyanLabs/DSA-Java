@@ -1,6 +1,6 @@
 public class Bitwiseop 
 {
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         int p=9;
         int q=10;
