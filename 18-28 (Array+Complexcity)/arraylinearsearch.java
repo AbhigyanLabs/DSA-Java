@@ -1,6 +1,8 @@
 import java.util.*;
-public class arraylinearsearch {
-        public static void main(String[] args){
+public class arraylinearsearch 
+{
+        public static void main(String[] args)
+        {
             Scanner sc=new Scanner(System.in);
             System.out.println("Enter the size of the array : ");
             int n = sc.nextInt();
