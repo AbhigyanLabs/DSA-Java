@@ -1,6 +1,6 @@
 import java.util.*;
 public class arraylinearsearch 
-{
+    {
         public static void main(String[] args)
         {
             Scanner sc=new Scanner(System.in);
@@ -30,4 +30,4 @@ public class arraylinearsearch
                 System.out.println("Element not found ");
             }
         }
-}
+    }
