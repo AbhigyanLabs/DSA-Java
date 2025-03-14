@@ -1,5 +1,5 @@
 //A very important program because we are building the map to use the function, calling the function in a for 
-//loop, converting the charater into the number and vice versa.
+//loop, converting the character into the number and vice versa.
 //Do a dry run for a better understanding.
 import java.util.*;
 class keypad
