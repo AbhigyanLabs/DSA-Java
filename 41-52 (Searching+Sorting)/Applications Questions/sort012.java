@@ -1,5 +1,5 @@
 import java.util.*;
-class test
+class sort012
 {
     static void swap(int arr[] ,int a,int b)
     {
