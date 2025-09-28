@@ -1,4 +1,4 @@
-DSA Repository 🚀
+# DSA Repository 🚀
 
 This repository contains my Data Structures and Algorithms (DSA) journey, including implementations of various algorithms and problem-solving techniques in Java. It serves as a personal learning resource and a 
 reference for coding interviews and competitive programming.
@@ -153,27 +153,166 @@ while (left < right) {
 
 ## 📝 Quick Flow (Decision Map)
 
-1. Is array **sorted normally**? → Use **basic binary search**
-2. Is array **rotated**?
-
-   * No duplicates → use **rotated search template**
-   * With duplicates → shrink edges then use rotated search
-3. Searching **min / boundary**? → Use `<` loop style
-4. Searching **exact target**? → Use `<=` loop style
+## 1️⃣ Sorted Array → Basic Binary Search
+```java
+int binarySearch(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) { // <= for exact target search
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == target) return mid;
+        else if (nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1; // not found
+}
+````
 
 ---
 
-💡 Master these templates and you can solve LeetCode classics:
+## 2️⃣ Rotated Array (No Duplicates) → LeetCode 33
 
-* 33. Search in Rotated Sorted Array
-* 34. Find First and Last Position
-* 35. Search Insert Position
-* 74. Search a 2D Matrix
-* 81. Search in Rotated Sorted Array II
-* 153. Find Minimum in Rotated Sorted Array
-* 154. Find Minimum in Rotated Sorted Array II
-* 162. Find Peak Element
-* 240. Search a 2D Matrix II
+```java
+boolean searchRotated(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (nums[mid] == target) return true;
+
+        // Left side is sorted
+        if (nums[left] <= nums[mid]) {
+            if (nums[left] <= target && target < nums[mid]) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        } 
+        // Right side is sorted
+        else {
+            if (nums[mid] < target && target <= nums[right]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+    }
+    return false;
+}
+```
+
+---
+
+## 3️⃣ Rotated Array (With Duplicates) → LeetCode 81
+
+```java
+boolean searchRotatedWithDup(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (nums[mid] == target) return true;
+
+        // Shrink edges if duplicates block decision
+        if (nums[left] == nums[mid] && nums[mid] == nums[right]) {
+            left++; right--;
+            continue;
+        }
+
+        // Left side sorted
+        if (nums[left] <= nums[mid]) {
+            if (nums[left] <= target && target < nums[mid]) right = mid - 1;
+            else left = mid + 1;
+        } 
+        // Right side sorted
+        else {
+            if (nums[mid] < target && target <= nums[right]) left = mid + 1;
+            else right = mid - 1;
+        }
+    }
+    return false;
+}
+```
+
+---
+
+## 4️⃣ Find Minimum in Rotated Array (Boundary Search) → LeetCode 153
+
+```java
+int findMin(int[] nums) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) { // < for boundary search
+        int mid = left + (right - left) / 2;
+        if (nums[mid] > nums[right]) {
+            left = mid + 1; // min is in right half
+        } else {
+            right = mid; // mid could be min
+        }
+    }
+    return nums[left];
+}
+```
+
+---
+
+## 5️⃣ Find Minimum in Rotated Array With Duplicates → LeetCode 154
+
+```java
+int findMinWithDup(int[] nums) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] > nums[right]) {
+            left = mid + 1;
+        } else if (nums[mid] < nums[right]) {
+            right = mid;
+        } else {
+            right--; // shrink duplicates
+        }
+    }
+    return nums[left];
+}
+```
+
+---
+
+## 6️⃣ First and Last Occurrence
+
+### First Occurrence (Lower Bound)
+
+```java
+int firstOccurrence(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] >= target) right = mid;
+        else left = mid + 1;
+    }
+    return (nums[left] == target) ? left : -1;
+}
+```
+
+### Last Occurrence (Upper Bound)
+
+```java
+int lastOccurrence(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int mid = left + (right - left + 1) / 2; // bias right
+        if (nums[mid] <= target) left = mid;
+        else right = mid - 1;
+    }
+    return (nums[left] == target) ? left : -1;
+}
+```
+
+---
+
+# ⚡ Key Rules
+
+* **Exact target search** → use `<=`
+* **Boundary/min/max search** → use `<`
+* **Rotated array** → always check which half is sorted
+* **Duplicates** → shrink edges safely (`left++`, `right--`)
 
 💡 Usage
 Feel free to explore, contribute, and improve the solutions! Clone the repository and run the code in your preferred environment.
